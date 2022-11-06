@@ -43,6 +43,9 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
+*.kra
+*.kra~
+*.kra.meta
 *.mdb
 *.opendb
 *.VC.db

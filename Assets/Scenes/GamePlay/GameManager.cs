@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,7 +9,10 @@ public class GameManager : MonoBehaviour
     private float _timer;
     [SerializeField]
     private int _score;
-    private bool playing = false;
+    public bool playing = false;
+    private GameObject _gameOverUI;
+    private GameObject _UI;
+    private TMP_InputField _nameInput;
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -23,6 +27,10 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
 
+        _UI = GameObject.Find("UI");
+        _gameOverUI = GameObject.Find("GameOverUI");
+        _nameInput = _gameOverUI.GetComponentInChildren<TMP_InputField>();
+
         StartGame();
     }
 
@@ -30,25 +38,32 @@ public class GameManager : MonoBehaviour
     {
         if (playing)
         {
+            Time.timeScale = 1;
             _timer -= Time.deltaTime;
             if (_timer <= 0)
             {
                 GameOver();
             }
         }
+        else
+        {
+            Time.timeScale = 0;
+        };
+    }
+
+    public void StartGame()
+    {
+        _UI.SetActive(true);
+        _gameOverUI.SetActive(false);
+        _timer = (_timerStartVal * 60);
+        playing = true;
     }
 
     private void GameOver()
     {
         playing = false;
-        LeaderboardManager.PostScore("anon", 120);
-        LoadingData.LoadScene("MainMenu");
-    }
-
-    public void StartGame()
-    {
-        _timer = (_timerStartVal * 60);
-        playing = true;
+        _UI.SetActive(false);
+        _gameOverUI.SetActive(true);
     }
 
     public int TimeRemaining
@@ -74,5 +89,11 @@ public class GameManager : MonoBehaviour
     public void AddScore(int value)
     {
         _score += value;
+    }
+
+    public void SubmitScore()
+    {
+        LeaderboardManager.PostScore(_nameInput.text, Score);
+        LoadingData.LoadScene("MainMenu");
     }
 }

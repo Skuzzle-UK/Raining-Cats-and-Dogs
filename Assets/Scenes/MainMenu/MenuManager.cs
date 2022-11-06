@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    private LeaderboardManager _leaderboard = new LeaderboardManager();
     public static MenuManager Instance { get; private set; }
     private void Awake()
     {
+        Time.timeScale = 1;
         // If there is an instance, and it's not me, delete myself.
         if (Instance != null && Instance != this)
         {
@@ -24,6 +24,6 @@ public class MenuManager : MonoBehaviour
 
     public void ShowLeaderboard()
     {
-        StartCoroutine(_leaderboard.GetTopScores(2));
+        LoadingData.LoadScene("Leaderboard");
     }
 }
