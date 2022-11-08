@@ -1,14 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class SpawnPointController : MonoBehaviour
 {
     public GameObject[] spawnableTargets;
+    [HideInInspector]
     public bool hasTargets = false;
     public List<GameObject> spawnedTargets = new List<GameObject>();
+    [SerializeField]
+    private List<SpawnPointController> interferingSpawnPoints = new List<SpawnPointController>();
     [SerializeField]
     private Vector2 initialSpawnVelocity;
     [SerializeField, Range(1, 500)]
@@ -59,21 +63,31 @@ public class SpawnPointController : MonoBehaviour
         float delay = Random.Range(minSpawnDelaySeconds, maxSpawnDelaySeconds);
         yield return new WaitForSeconds(delay);
 
-        //Get spawn lock
+        //Wait for other lock
         while (spawnLock)
         {
+            yield return new WaitForSeconds(1);
+        }
+
+        var interferingTargets = interferingSpawnPoints.FirstOrDefault(x => x.hasTargets == true);
+        var interferingLock = interferingSpawnPoints.FirstOrDefault(x => x.spawnLock == true);
+
+        while (interferingLock || interferingTargets)
+        {
             yield return new WaitForEndOfFrame();
+            interferingTargets = interferingSpawnPoints.FirstOrDefault(x => x.hasTargets == true);
+            interferingLock = interferingSpawnPoints.FirstOrDefault(x => x.spawnLock == true);
         }
 
         //get spawn lock, spawn and then release lock
         spawnLock = true;
-        SpawnTargets(target);
+        SpawnTarget(target);
         spawnLock = false;
 
         timerRunning = false;
     }
 
-    private void SpawnTargets(GameObject t)
+    private void SpawnTarget(GameObject t)
     {
         GameObject target = Instantiate(t, this.transform);
         spawnedTargets.Add(target);

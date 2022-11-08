@@ -14,8 +14,8 @@ public class LeaderboardRow
 public static class LeaderboardManager
 {
     private static readonly string secretKey = "ACoolSecretWord"; //must match secret key of php document
-    private static readonly string addScoreURL = "http://rainingcatsanddogs.skuzzle.com/leaderboard/addScore.php?";
-    private static readonly string displayTopURL = "http://rainingcatsanddogs.skuzzle.com/leaderboard/displayTop.php?";
+    private static readonly string addScoreURL = "https://rainingcatsanddogs.skuzzle.com/leaderboard/addScore.php?";
+    private static readonly string displayTopURL = "https://rainingcatsanddogs.skuzzle.com/leaderboard/displayTop.php?";
     private static string _leaderboardJson;
     public static bool Downloading = false;
 

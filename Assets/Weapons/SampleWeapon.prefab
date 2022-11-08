@@ -103,8 +103,8 @@ MonoBehaviour:
   startHeightAboveLauncher: 2
   _powerMultiplier: 1
   _powerFade: 2
-  _fallRate: 1
-  _fallRateAdder: 1.5
+  _fallRate: 2.5
+  _fallRateAdder: 3
   _shrinkDivider: 12
 --- !u!50 &8743946816075036291
 Rigidbody2D:
