@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
@@ -18,12 +19,30 @@ public class WeaponController : MonoBehaviour
     private Rigidbody2D _rbody;
     private bool _hitFloor = false;
     private bool _hitTarget = false;
+    [SerializeField]
+    private List<AudioClip> _firedSFX;
+    [SerializeField]
+    private AudioClip _hitTargetSFX;
+    [SerializeField]
+    private AudioClip _hitFloorSFX;
+    private AudioSource _audioSource;
+    [SerializeField]
+    private GameObject _instantiateOnDestroy;
 
     private void Awake()
     {
         power = power * _powerMultiplier;
         _move = new Vector2(0, power);
         _rbody = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
+        try
+        {
+            _audioSource.PlayOneShot(_firedSFX[Random.Range(0, _firedSFX.Count)]);
+        }
+        catch
+        {
+            Debug.Log("No audio clip assigned to fired SFX");
+        }
     }
 
     private void FixedUpdate()
@@ -72,9 +91,9 @@ public class WeaponController : MonoBehaviour
     //@TODO Sequence for hitting target
     private void HitTarget(Collider2D collision)
     {
-        _hitTarget = true;
         TargetController target = collision.gameObject.transform.GetComponent<TargetController>();
         target.TargetHit();
+        playDestroy(ref _hitTargetSFX);
         Destroy(this.gameObject);
     }
 
@@ -82,6 +101,7 @@ public class WeaponController : MonoBehaviour
     private void HitFloor()
     {
         _hitFloor = true;
+        playDestroy(ref _hitFloorSFX);
         Destroy(this.gameObject);
     }
 
@@ -99,5 +119,14 @@ public class WeaponController : MonoBehaviour
             _move.x = 0;
         }
         _rbody.velocity = _move;
+    }
+
+    private void playDestroy(ref AudioClip clip)
+    {
+        var weaponDestroyed = Instantiate(_instantiateOnDestroy);
+        weaponDestroyed.transform.position = this.transform.position;
+        AudioSource audio = weaponDestroyed.GetComponent<AudioSource>();
+        audio.clip = clip;
+        audio.Play();
     }
 }

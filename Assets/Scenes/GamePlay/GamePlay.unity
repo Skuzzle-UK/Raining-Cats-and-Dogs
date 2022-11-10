@@ -1518,7 +1518,7 @@ MonoBehaviour:
   m_Intensity: 0.9
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000007fa2047fb7bf7d8d
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2357,7 +2357,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -2378,8 +2378,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1921138761
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2405,7 +2405,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &940197409
 MonoBehaviour:
@@ -2424,9 +2424,9 @@ MonoBehaviour:
   _firePowerIncSpeed: 5
   _maxFirePower: 6.8
   _primaryWeapon: {fileID: 5270550836198272488, guid: a005598c0b80f704c8508dcad5a5be37, type: 3}
-  _secondaryWeapon: {fileID: 4329173997459059490, guid: 4bf7432010446ae47a2e25fb1343c0b7, type: 3}
+  _secondaryWeapon: {fileID: 5270550836198272488, guid: 5b1dc75eec7ec924580be1eaf0da1e82, type: 3}
   _primaryAmmo: -1
-  _secondaryAmmo: 3
+  _secondaryAmmo: 20
   _xMinLimit: -9.5
   _xMaxLimit: 9.5
   _yMinLimit: -5
@@ -6818,7 +6818,7 @@ PrefabInstance:
       objectReference: {fileID: 247754008}
     - target: {fileID: 2268382208703233373, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233373, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: m_LocalPosition.x
