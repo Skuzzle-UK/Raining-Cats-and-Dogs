@@ -45,8 +45,6 @@ public class TargetController : MonoBehaviour
     {
         if (OutOfPlay())
         {
-            SpawnPointController spc = GetComponentInParent<SpawnPointController>();
-            spc.spawnedTargets.Remove(this.gameObject);
             Destroy(this.gameObject);
         }
     }
@@ -61,7 +59,7 @@ public class TargetController : MonoBehaviour
     }
 
     //@TODO Sequence for destroying target
-    public void Destroy()
+    public void TargetHit()
     {
         GameManager.Instance.AddScore(_pointsValue);
         GameManager.Instance.AddTime(_timeAdder);
@@ -70,5 +68,11 @@ public class TargetController : MonoBehaviour
             _playerController.AddAmmo(_weapon, _ammoGain);
         }
         Destroy(this.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        SpawnPointController spc = GetComponentInParent<SpawnPointController>();
+        spc.spawnedTargets.Remove(this.gameObject);
     }
 }

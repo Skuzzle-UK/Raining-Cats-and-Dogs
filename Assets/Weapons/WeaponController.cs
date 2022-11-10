@@ -74,7 +74,7 @@ public class WeaponController : MonoBehaviour
     {
         _hitTarget = true;
         TargetController target = collision.gameObject.transform.GetComponent<TargetController>();
-        target.Destroy();
+        target.TargetHit();
         Destroy(this.gameObject);
     }
 

@@ -24,9 +24,9 @@ public class TimeOfDayController : MonoBehaviour
         float val = Math.Abs(43200 - (float)timespan.TotalSeconds);
         val = val / 43200;
         val = 1 - val;
-        if (val < 0.1f)
+        if (val < 0.2f)
         {
-            val = 0.1f;
+            val = 0.2f;
         }
         if (val > 0.95f)
         {

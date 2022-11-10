@@ -2421,8 +2421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: 10
   _fireInitialPower: 2.7
-  _firePowerIncSpeed: 3
-  _maxFirePower: 6
+  _firePowerIncSpeed: 5
+  _maxFirePower: 6.8
   _primaryWeapon: {fileID: 5270550836198272488, guid: a005598c0b80f704c8508dcad5a5be37, type: 3}
   _secondaryWeapon: {fileID: 4329173997459059490, guid: 4bf7432010446ae47a2e25fb1343c0b7, type: 3}
   _primaryAmmo: -1
