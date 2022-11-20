@@ -36,10 +36,12 @@ public class PlayerController : MonoBehaviour
     private float _fireSecondaryPower;
     private WeaponChargeUiController _primaryWeaponChargeUI;
     private WeaponChargeUiController _secondaryWeaponChargeUI;
+    private Animator _animator;
 
 
     private void Awake()
     {
+        _animator = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput>();
         _rbody = GetComponent<Rigidbody2D>();
         _playerInput.SwitchCurrentActionMap("UpTop");
@@ -74,6 +76,10 @@ public class PlayerController : MonoBehaviour
     {
         if (value.Get<float>() > 0.05f)
         {
+            if (_primaryAmmo != 0)
+            {
+                _animator.Play("PlayerCharge");
+            }
             _firePrimary = true;
         }
         else
@@ -86,6 +92,10 @@ public class PlayerController : MonoBehaviour
     {
         if (value.Get<float>() > 0.05f)
         {
+            if (_secondaryAmmo != 0)
+            {
+                _animator.Play("PlayerCharge");
+            }
             _fireSecondary = true;
         }
         else
@@ -184,6 +194,7 @@ public class PlayerController : MonoBehaviour
 
     private void ReleaseWeapon(GameObject weapon, float power)
     {
+        _animator.Play("PlayerThrow");
         GameObject obj = Instantiate(weapon);
         WeaponController weaponController = obj.GetComponent<WeaponController>();
         weaponController.power = power;

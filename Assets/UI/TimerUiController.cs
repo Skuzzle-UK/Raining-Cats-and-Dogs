@@ -13,6 +13,6 @@ public class TimerUiController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tmp.text = $"{GameManager.Instance.TimeRemaining.ToString()} s : Time";
+        tmp.text = $"{GameManager.Instance.TimeRemaining.ToString()} : Time";
     }
 }

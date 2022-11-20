@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2870978835000281674, guid: 4565154f58219ca4fbe3934df7567cd7, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -480735256181836758, guid: 75816a184565a084c94f4abd0f2c9281, type: 2}
     - target: {fileID: 3242479347512700431, guid: 4565154f58219ca4fbe3934df7567cd7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -50,6 +54,10 @@ PrefabInstance:
     - target: {fileID: 3242479347512700431, guid: 4565154f58219ca4fbe3934df7567cd7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873484284683940437, guid: 4565154f58219ca4fbe3934df7567cd7, type: 3}
+      propertyPath: _secondsBeforeDestroy
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8252128039403522953, guid: 4565154f58219ca4fbe3934df7567cd7, type: 3}
       propertyPath: m_Name

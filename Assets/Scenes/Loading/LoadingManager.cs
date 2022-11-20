@@ -25,6 +25,10 @@ public class LoadingManager : MonoBehaviour
     }
     IEnumerator LoadSceneAsync()
     {
+        if (LoadingData.SceneToLoad == null)
+        {
+            LoadingData.LoadScene("MainMenu");
+        }
         AsyncOperation operation = SceneManager.LoadSceneAsync(LoadingData.SceneToLoad);
         operation.allowSceneActivation = false;
 

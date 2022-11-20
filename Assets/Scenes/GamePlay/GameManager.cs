@@ -75,6 +75,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ReduceTime(float seconds)
+    {
+        _timer -= seconds;
+    }
+
     public void AddTime(float time)
     {
         _timer += time;

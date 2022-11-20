@@ -27,7 +27,9 @@ public class WeaponController : MonoBehaviour
     private AudioClip _hitFloorSFX;
     private AudioSource _audioSource;
     [SerializeField]
-    private GameObject _instantiateOnDestroy;
+    private GameObject _instantiateOnHitFloor;
+    [SerializeField]
+    private GameObject _instantiateOnHitTarget;
 
     private void Awake()
     {
@@ -81,7 +83,7 @@ public class WeaponController : MonoBehaviour
         }
         else
         {
-            if (!_hitFloor)
+            if (!_hitFloor && !_hitTarget)
             {
                 HitFloor();
             }
@@ -91,9 +93,10 @@ public class WeaponController : MonoBehaviour
     //@TODO Sequence for hitting target
     private void HitTarget(Collider2D collision)
     {
+        _hitTarget = true;
         TargetController target = collision.gameObject.transform.GetComponent<TargetController>();
         target.TargetHit();
-        playDestroy(ref _hitTargetSFX);
+        playDestroy(ref _hitTargetSFX, ref _instantiateOnHitTarget);
         Destroy(this.gameObject);
     }
 
@@ -101,7 +104,7 @@ public class WeaponController : MonoBehaviour
     private void HitFloor()
     {
         _hitFloor = true;
-        playDestroy(ref _hitFloorSFX);
+        playDestroy(ref _hitFloorSFX, ref _instantiateOnHitFloor);
         Destroy(this.gameObject);
     }
 
@@ -121,9 +124,9 @@ public class WeaponController : MonoBehaviour
         _rbody.velocity = _move;
     }
 
-    private void playDestroy(ref AudioClip clip)
+    private void playDestroy(ref AudioClip clip, ref GameObject instantiateOnDestroy)
     {
-        var weaponDestroyed = Instantiate(_instantiateOnDestroy);
+        var weaponDestroyed = Instantiate(instantiateOnDestroy);
         weaponDestroyed.transform.position = this.transform.position;
         AudioSource audio = weaponDestroyed.GetComponent<AudioSource>();
         audio.clip = clip;
