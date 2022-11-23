@@ -26,4 +26,9 @@ public class MenuManager : MonoBehaviour
     {
         LoadingData.LoadScene("Leaderboard");
     }
+
+    public void ShowOptions()
+    {
+        LoadingData.LoadScene("Options");
+    }
 }

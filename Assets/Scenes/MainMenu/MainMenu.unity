@@ -1393,7 +1393,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1142398489}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 964945452}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ShowOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1142398489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1511,6 +1523,7 @@ GameObject:
   - component: {fileID: 1382534286}
   - component: {fileID: 1382534288}
   - component: {fileID: 1382534287}
+  - component: {fileID: 1382534289}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1576,6 +1589,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382534285}
   m_CullTransparentMesh: 1
+--- !u!95 &1382534289
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382534285}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 349c75fe2ec98664fb9b7628c108534d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1395733481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,6 +1774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6329485c6ecea5440b76235cb51114e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: 75816a184565a084c94f4abd0f2c9281, type: 2}
 --- !u!82 &1569925232
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1997,6 +2031,7 @@ GameObject:
   - component: {fileID: 1574518793}
   - component: {fileID: 1574518795}
   - component: {fileID: 1574518794}
+  - component: {fileID: 1574518796}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2062,6 +2097,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574518792}
   m_CullTransparentMesh: 1
+--- !u!95 &1574518796
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574518792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85e0e9ffa705e0540a4f047ac73cfe98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1781486854
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
         if (playing)
         {
             Time.timeScale = 1;
-            _timer -= Time.deltaTime;
-            if (_timer <= 0)
+            Instance._timer -= Time.deltaTime;
+            if (Instance._timer <= 0)
             {
                 GameOver();
             }
@@ -53,52 +53,64 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        _UI.SetActive(true);
-        _gameOverUI.SetActive(false);
-        _timer = (_timerStartVal * 60);
-        playing = true;
+        Instance._UI.SetActive(true);
+        Instance._gameOverUI.SetActive(false);
+        Instance._timer = (_timerStartVal * 60);
+        Instance.playing = true;
+        try
+        {
+            GameAudio.Instance.UnMuteSFX();
+        }
+        catch (Exception e) { Debug.Log(e); }
     }
 
     private void GameOver()
     {
-        playing = false;
-        _UI.SetActive(false);
-        _gameOverUI.SetActive(true);
+        Instance.playing = false;
+        try
+        {
+            GameAudio.Instance.MuteSFX();
+        }
+        catch (Exception e) { Debug.Log(e); }
+        Instance._UI.SetActive(false);
+        Instance._gameOverUI.SetActive(true);
+        Instance._nameInput.Select();
+        Instance._nameInput.ActivateInputField();
     }
 
     public int TimeRemaining
     {
         get
         {
-            int val = (int)Math.Round(_timer);
+            int val = (int)Math.Round(Instance._timer);
             return val;
         }
     }
 
     public void ReduceTime(float seconds)
     {
-        _timer -= seconds;
+        Instance._timer -= seconds;
     }
 
     public void AddTime(float time)
     {
-        _timer += time;
+        Instance._timer += time;
     }
 
     public int Score
     {
         get
-        { return _score; }
+        { return Instance._score; }
     }
 
     public void AddScore(int value)
     {
-        _score += value;
+        Instance._score += value;
     }
 
     public void SubmitScore()
     {
-        LeaderboardManager.PostScore(_nameInput.text, Score);
+        LeaderboardManager.PostScore(Instance._nameInput.text, Instance.Score);
         LoadingData.LoadScene("MainMenu");
     }
 }
