@@ -31,7 +31,7 @@ public class ScoresDisplay : MonoBehaviour
         {
             if (!LeaderboardManager.Downloading)
             {
-                StartCoroutine(LeaderboardManager.DownloadTopScores(20));
+                StartCoroutine(LeaderboardManager.DownloadTopScores(25));
             }
             leaderboardJson = LeaderboardManager.ScoresJson;
         }
