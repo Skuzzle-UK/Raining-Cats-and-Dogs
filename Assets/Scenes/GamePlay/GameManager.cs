@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,10 +14,20 @@ public class GameManager : MonoBehaviour
     private GameObject _gameOverUI;
     private GameObject _UI;
     private TMP_InputField _nameInput;
+    [SerializeField]
+    private InputActionAsset _actions;
 
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
+        try
+        {
+            var rebinds = PlayerPrefs.GetString("rebinds");
+            if (!string.IsNullOrEmpty(rebinds))
+                _actions.LoadBindingOverridesFromJson(rebinds);
+        }
+        catch { }
+
         // If there is an instance, and it's not me, delete myself.
         if (Instance != null && Instance != this)
         {

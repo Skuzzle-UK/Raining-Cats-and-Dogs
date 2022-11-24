@@ -35,17 +35,6 @@
             ],
             "bindings": [
                 {
-                    "name": "1D Axis",
-                    "id": "2a6bac1a-e053-45c3-8a8d-800daf25c8c2",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "2D Vector",
                     "id": "dfdc8006-cc99-4427-b391-95b930b5b054",
                     "path": "2DVector",
@@ -55,28 +44,6 @@
                     "action": "Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "505127ea-1565-41b6-9edb-2684f5fc2558",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Standard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "1af560c4-84a8-49c6-8582-8a5607a73b46",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Standard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "left",
