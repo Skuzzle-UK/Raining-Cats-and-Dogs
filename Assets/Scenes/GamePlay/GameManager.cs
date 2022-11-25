@@ -141,6 +141,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
+        Instance.playing = true;
         Time.timeScale = 1;
         LoadingData.LoadScene("MainMenu");
     }
