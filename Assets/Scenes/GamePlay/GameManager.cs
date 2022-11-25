@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
     private TMP_InputField _nameInput;
     [SerializeField]
     private InputActionAsset _actions;
+    private bool _firstTargetEjected = false;
+    public bool FirstTargetEjected { get { return _firstTargetEjected; } }
+
+    [SerializeField]
+    private GameObject _getReadyUI;
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -50,7 +55,10 @@ public class GameManager : MonoBehaviour
         if (playing)
         {
             Time.timeScale = 1;
-            Instance._timer -= Time.deltaTime;
+            if (FirstTargetEjected)
+            {
+                Instance._timer -= Time.deltaTime;
+            }
             if (Instance._timer <= 0)
             {
                 GameOver();
@@ -60,6 +68,12 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
         };
+    }
+
+    public void TargetEjected()
+    {
+        _firstTargetEjected = true;
+        _getReadyUI.active = false;
     }
 
     public void StartGame()
@@ -122,6 +136,11 @@ public class GameManager : MonoBehaviour
     public void SubmitScore()
     {
         LeaderboardManager.PostScore(Instance._nameInput.text, Instance.Score);
+        LoadingData.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
         LoadingData.LoadScene("MainMenu");
     }
 }

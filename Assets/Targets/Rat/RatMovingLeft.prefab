@@ -295,7 +295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: _timeAdder
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: _pointsValue
@@ -305,6 +305,14 @@ PrefabInstance:
       propertyPath: _rewardObject
       value: 
       objectReference: {fileID: 8125123507975616518, guid: 07a20266f34df3f4589dcf44755a514d, type: 3}
+    - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
+      propertyPath: _specialTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
+      propertyPath: _specialTargetHitAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5151e604e8c2235489db73956148ef11, type: 3}
     - target: {fileID: 1126386550147942076, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: m_Enabled
       value: 1

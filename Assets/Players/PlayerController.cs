@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,10 +38,14 @@ public class PlayerController : MonoBehaviour
     private WeaponChargeUiController _primaryWeaponChargeUI;
     private WeaponChargeUiController _secondaryWeaponChargeUI;
     private Animator _animator;
+    private bool _paused;
+    [SerializeField]
+    private GameObject _pauseMenu;
 
 
     private void Awake()
     {
+        _pauseMenu.active = false;
         _animator = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput>();
         _rbody = GetComponent<Rigidbody2D>();
@@ -62,6 +67,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(_paused)
+        {
+            return;
+        }
         CheckPositionLimits();
         WeaponsCheck(ref _primaryAmmo, ref _firePrimary, ref _firePrimaryPower, ref _primaryWeapon, ref _primaryWeaponChargeUI);
         WeaponsCheck(ref _secondaryAmmo, ref _fireSecondary, ref _fireSecondaryPower, ref _secondaryWeapon, ref _secondaryWeaponChargeUI);
@@ -74,6 +83,10 @@ public class PlayerController : MonoBehaviour
 
     void OnFirePrimary(InputValue value)
     {
+        if (!GameManager.Instance.FirstTargetEjected)
+        {
+            return;
+        }
         if (value.Get<float>() > 0.05f)
         {
             if (_primaryAmmo != 0)
@@ -90,6 +103,10 @@ public class PlayerController : MonoBehaviour
 
     void OnFireSecondary(InputValue value)
     {
+        if (!GameManager.Instance.FirstTargetEjected)
+        {
+            return;
+        }
         if (value.Get<float>() > 0.05f)
         {
             if (_secondaryAmmo != 0)
@@ -199,5 +216,38 @@ public class PlayerController : MonoBehaviour
         WeaponController weaponController = obj.GetComponent<WeaponController>();
         weaponController.power = power;
         obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - weaponController.startHeightAboveLauncher);
+    }
+
+    public void TogglePause()
+    {
+        _paused = !_paused;
+        GameManager.Instance.playing = !GameManager.Instance.playing;
+        if (!GameManager.Instance.playing)
+        {
+            try
+            {
+                GameAudio.Instance.MuteSFX();
+            }
+            catch (Exception e) { Debug.Log(e); }
+            _pauseMenu.active = true;
+
+        }
+        else
+        {
+            try
+            {
+                GameAudio.Instance.UnMuteSFX();
+            }
+            catch (Exception e) { Debug.Log(e); }
+            _pauseMenu.active = false;
+        }
+    }
+
+    private void OnPause(InputValue value)
+    {
+        if (value.Get<float>() > 0.05f)
+        {
+            TogglePause();
+        }
     }
 }

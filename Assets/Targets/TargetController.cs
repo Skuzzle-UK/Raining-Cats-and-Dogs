@@ -1,4 +1,7 @@
+using System.Collections;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class TargetController : MonoBehaviour
 {
@@ -25,24 +28,64 @@ public class TargetController : MonoBehaviour
     private float _maxY = 8f;
     [SerializeField]
     private GameObject _rewardObject;
+    [SerializeField]
+    private bool _eraticMovement = false;
+    [SerializeField]
+    private float _eraticDampner = 2.2f;
+    [SerializeField]
+    private bool _faceTravelDirection = false;
+    [SerializeField]
+    private float _rotateDampening = 10f;
+    [SerializeField]
+    private bool _specialTarget;
+    [SerializeField]
+    private AudioClip _specialTargetHitAudio;
+    private AudioSource _audioSource;
 
     private Rigidbody2D _rbody;
     private PlayerController _playerController;
+    private Quaternion desiredRotQ;
+    private Vector2 newVelocity = new Vector2();
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _playerController = FindObjectOfType<PlayerController>();
         _rbody = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
+        newVelocity = velocity;
         _rbody.velocity = velocity;
+        StartCoroutine(GetNewVelocity());
+    }
+
+    IEnumerator GetNewVelocity()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (_eraticMovement)
+        {
+            newVelocity.x = Random.Range(-velocity.x + -velocity.y, velocity.x + velocity.y) / _eraticDampner;
+            newVelocity.y = Random.Range(-velocity.x + -velocity.y, velocity.x + velocity.y) / _eraticDampner;
+            newVelocity += _rbody.velocity / (_eraticDampner / 2.5f);
+
+        }
+        else
+        {
+            newVelocity = velocity;
+        }
+        StartCoroutine(GetNewVelocity());
     }
 
     private void Update()
     {
-        _rbody.velocity = velocity;
+        _rbody.velocity = newVelocity;
+        if (_faceTravelDirection)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, _rbody.velocity.normalized);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotateDampening * Time.deltaTime);
+        }
     }
 
     private void FixedUpdate()
@@ -68,6 +111,7 @@ public class TargetController : MonoBehaviour
     //@TODO Sequence for destroying target
     public void TargetHit()
     {
+        _audioSource.PlayOneShot(_specialTargetHitAudio);
         RewardPlayer();
         if (_ammoGain > 0)
         {
@@ -75,6 +119,20 @@ public class TargetController : MonoBehaviour
         }
         SpawnPointController spc = GetComponentInParent<SpawnPointController>();
         spc.spawnedTargets.Remove(this.gameObject);
+        var children = gameObject.GetComponentInChildren<Transform>();
+        foreach (Transform child in children)
+        {
+            child.gameObject.active = false;
+        }
+        StartCoroutine(DestroyTarget());
+    }
+
+    IEnumerator DestroyTarget()
+    {
+        while(_audioSource.isPlaying)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         Destroy(this.gameObject);
     }
 

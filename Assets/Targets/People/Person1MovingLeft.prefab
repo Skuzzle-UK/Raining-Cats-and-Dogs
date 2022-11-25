@@ -55,5 +55,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Person1MovingLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 5625064569318808042, guid: 28805f993021dc84581108bea5d94cf5, type: 3}
+      propertyPath: _timeAdder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28805f993021dc84581108bea5d94cf5, type: 3}

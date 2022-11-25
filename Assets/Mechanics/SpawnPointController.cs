@@ -93,6 +93,8 @@ public class SpawnPointController : MonoBehaviour
         spawnedTargets.Add(target);
         hasTargets = true;
 
+        GameManager.Instance.TargetEjected();
+
         //Set start position
         target.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, target.transform.position.z);
 

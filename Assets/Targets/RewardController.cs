@@ -73,7 +73,6 @@ public class RewardController : MonoBehaviour
 
     private void SetPosition()
     {
-        Debug.Log(transform.position);
         switch (rewardType)
         {
             case RewardType.Score:

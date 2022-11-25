@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1.1309735
       objectReference: {fileID: 0}
+    - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
+      propertyPath: _timeAdder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1126386550147942076, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: m_Enabled
       value: 0
