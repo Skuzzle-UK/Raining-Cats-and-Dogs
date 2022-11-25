@@ -110,25 +110,32 @@ public class TargetController : MonoBehaviour
     //@TODO Sequence for destroying target
     public void TargetHit()
     {
+        _audioSource.Stop();
         _audioSource.PlayOneShot(_specialTargetHitAudio);
+        
         RewardPlayer();
+        
         if (_ammoGain > 0)
         {
             _playerController.AddAmmo(_weapon, _ammoGain);
         }
+        
         SpawnPointController spc = GetComponentInParent<SpawnPointController>();
+        
         spc.spawnedTargets.Remove(this.gameObject);
+        
         var children = gameObject.GetComponentInChildren<Transform>();
         foreach (Transform child in children)
         {
             child.gameObject.active = false;
         }
+        
         StartCoroutine(DestroyTarget());
     }
 
     IEnumerator DestroyTarget()
     {
-        while(_audioSource.isPlaying)
+        while (_audioSource.isPlaying)
         {
             yield return new WaitForEndOfFrame();
         }
