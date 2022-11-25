@@ -25,6 +25,7 @@ public class LoadingManager : MonoBehaviour
     }
     IEnumerator LoadSceneAsync()
     {
+        yield return new WaitForSeconds(3);
         if (LoadingData.SceneToLoad == null)
         {
             LoadingData.LoadScene("MainMenu");
