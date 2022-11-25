@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4646589436786471162, guid: 0a0083fee70a7144b8944a952d3e9717, type: 3}
       propertyPath: _timeAdder
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4646589436786471162, guid: 0a0083fee70a7144b8944a952d3e9717, type: 3}
       propertyPath: _pointsValue

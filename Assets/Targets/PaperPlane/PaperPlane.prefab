@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: _timeAdder
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: velocity.x
