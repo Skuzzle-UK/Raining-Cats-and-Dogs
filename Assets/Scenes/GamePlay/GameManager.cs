@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     public void SubmitScore()
     {
         LeaderboardManager.PostScore(Instance._nameInput.text, Instance.Score);
-        LoadingData.LoadScene("MainMenu");
+        QuitGame();
     }
 
     public void QuitGame()
