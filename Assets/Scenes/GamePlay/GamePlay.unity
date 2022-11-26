@@ -6950,7 +6950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c112f1ee3a073244485fd1d45af86aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timerStartVal: 0.1
+  _timerStartVal: 1.5
   _score: 0
   playing: 0
   _actions: {fileID: -944628639613478452, guid: 29dc2e01f9cbd9a488b0df38a6427f3c, type: 3}
