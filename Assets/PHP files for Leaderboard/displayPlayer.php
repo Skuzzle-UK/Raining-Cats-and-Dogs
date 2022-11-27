@@ -2,8 +2,8 @@
 header("Access-Control-Allow-Origin: *");
 $servername = "host.com";
 $username = "user";
-$password = "aPassword";
-$dbname = "databaseName";
+$password = "pass";
+$dbname = "database";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -32,8 +32,11 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     $rows = [];
+    $position = 1;
     while($r = mysqli_fetch_assoc($result)) {
         $rows[] = $r;
+	  $rows[$position -1][position] = $position;
+	  $position++;
     }
   $id = $rows[0][id];
 }
@@ -73,6 +76,7 @@ $index = 0;
 for($i = $startpoint; $i <= $endpoint; $i++){
 	if (!is_null($rows[$i])){
 		$outputArray[$index] = $rows[$i];
+		$outputArray[$index][position] = $i + 1;
 	}
 	$index++;
 }

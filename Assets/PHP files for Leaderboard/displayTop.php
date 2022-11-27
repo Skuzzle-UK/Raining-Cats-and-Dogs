@@ -2,8 +2,8 @@
 header("Access-Control-Allow-Origin: *");
 $servername = "host.com";
 $username = "user";
-$password = "aPassword";
-$dbname = "databaseName";
+$password = "pass";
+$dbname = "database";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -20,8 +20,11 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     $rows = array();
+    $position = 1;
     while($r = mysqli_fetch_assoc($result)) {
         $rows[] = $r;
+	  $rows[$position - 1][position] = $position;
+	  $position++;
     }
   echo json_encode($rows);
 } else {
