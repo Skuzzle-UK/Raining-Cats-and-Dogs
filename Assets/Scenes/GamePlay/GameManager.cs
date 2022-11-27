@@ -98,7 +98,10 @@ public class GameManager : MonoBehaviour
     {
         _audioSource.PlayOneShot(_bongAudioClip);
         yield return new WaitForSeconds(1);
-        StartCoroutine(Bong());
+        if (_timer <= 10)
+        {
+            StartCoroutine(Bong());
+        }
     }
 
     public void TargetEjected()

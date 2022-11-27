@@ -323,11 +323,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: _timeAdder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: _pointsValue
-      value: 45
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: _outOfPlaytimeReduction

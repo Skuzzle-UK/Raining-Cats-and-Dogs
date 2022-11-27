@@ -418,11 +418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233371, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: maxSpawnDelaySeconds
-      value: 70
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233371, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: minSpawnDelaySeconds
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233371, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: initialSpawnVelocity.x
@@ -3527,7 +3527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233371, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: maxSpawnDelaySeconds
-      value: 70
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233371, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: minSpawnDelaySeconds
@@ -6951,7 +6951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c112f1ee3a073244485fd1d45af86aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timerStartVal: 0.2
+  _timerStartVal: 1.5
   _score: 0
   playing: 0
   _actions: {fileID: -944628639613478452, guid: 29dc2e01f9cbd9a488b0df38a6427f3c, type: 3}
