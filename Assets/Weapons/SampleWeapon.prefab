@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7034131307435346552}
   - component: {fileID: 8743946816075036291}
   - component: {fileID: -6273347596241783768}
+  - component: {fileID: 6207129625508248105}
   m_Layer: 0
   m_Name: SampleWeapon
   m_TagString: Untagged
@@ -109,7 +110,8 @@ MonoBehaviour:
   _firedSFX: []
   _hitTargetSFX: {fileID: 0}
   _hitFloorSFX: {fileID: 0}
-  _instantiateOnDestroy: {fileID: 8252128039403522953, guid: 4565154f58219ca4fbe3934df7567cd7, type: 3}
+  _instantiateOnHitFloor: {fileID: 0}
+  _instantiateOnHitTarget: {fileID: 0}
 --- !u!50 &8743946816075036291
 Rigidbody2D:
   serializedVersion: 4
@@ -147,3 +149,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!114 &6207129625508248105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487413930895518171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3fae74b6d3284478fc2576761e19a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

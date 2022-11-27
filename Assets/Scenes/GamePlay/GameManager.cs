@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,9 +23,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _getReadyUI;
 
+    private AudioSource _audioSource;
+    [SerializeField]
+    private AudioClip _bongAudioClip;
+    
+
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         try
         {
             var rebinds = PlayerPrefs.GetString("rebinds");
@@ -58,6 +66,10 @@ public class GameManager : MonoBehaviour
             if (FirstTargetEjected)
             {
                 Instance._timer -= Time.deltaTime;
+                if (_timer <= 10)
+                {
+                    StartCoroutine(BongOnPrepare());
+                }
             }
             if (Instance._timer <= 0)
             {
@@ -68,6 +80,25 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
         };
+    }
+
+    private bool _bonging = false;
+    
+    private IEnumerator BongOnPrepare()
+    {
+        if(!_bonging)
+        {
+            _bonging = true;
+            StartCoroutine(Bong());
+            yield return null;
+        }
+    }
+
+    private IEnumerator Bong()
+    {
+        _audioSource.PlayOneShot(_bongAudioClip);
+        yield return new WaitForSeconds(1);
+        StartCoroutine(Bong());
     }
 
     public void TargetEjected()

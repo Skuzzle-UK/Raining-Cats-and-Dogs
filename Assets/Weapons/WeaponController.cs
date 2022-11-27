@@ -129,7 +129,6 @@ public class WeaponController : MonoBehaviour
         var weaponDestroyed = Instantiate(instantiateOnDestroy);
         weaponDestroyed.transform.position = this.transform.position;
         AudioSource audio = weaponDestroyed.GetComponent<AudioSource>();
-        audio.clip = clip;
-        audio.Play();
+        audio.PlayOneShot(clip);
     }
 }
