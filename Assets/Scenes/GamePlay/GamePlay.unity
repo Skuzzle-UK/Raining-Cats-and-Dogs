@@ -1319,7 +1319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233371, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: initialSpawnVelocity.x
-      value: -2.2
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233371, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: spawnableTargets.Array.data[0]
@@ -2028,7 +2028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233371, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: initialSpawnVelocity.x
-      value: 2.2
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2268382208703233371, guid: 68352261ca9267f4aa9b153eda13b9da, type: 3}
       propertyPath: spawnableTargets.Array.data[0]
