@@ -102,6 +102,10 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(Bong());
         }
+        else
+        {
+            _bonging = false;
+        }
     }
 
     public void TargetEjected()
