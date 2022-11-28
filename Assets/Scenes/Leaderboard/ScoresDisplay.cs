@@ -26,7 +26,7 @@ public class ScoresDisplay : MonoBehaviour
 
     private void Awake()
     {
-        _playerHighlighterStartYPosition = _playerHighlighter.transform.position.y;
+        _playerHighlighterStartYPosition = _playerHighlighter.transform.localPosition.y;
 
         _playerPositionToggleSlider = GetComponentInChildren<ToggleSlider>();
 
@@ -151,7 +151,7 @@ public class ScoresDisplay : MonoBehaviour
                 _score.text += $"{row.score}\n";
                 if (row.name == PlayerPrefs.GetString("name") && row.score == PlayerPrefs.GetInt("bestscore"))
                 {
-                    _playerHighlighter.transform.position = new Vector3(_playerHighlighter.transform.position.x, _playerHighlighterStartYPosition - (27.5f * (row.position - rows[0].position)), 0);
+                    _playerHighlighter.transform.localPosition = new Vector3(_playerHighlighter.transform.localPosition.x, _playerHighlighterStartYPosition - (27.5f * (row.position - rows[0].position)), 0);
                 }
             }
         }
