@@ -46,11 +46,23 @@ public class TargetController : MonoBehaviour
     private Quaternion desiredRotQ;
     private Vector2 newVelocity = new Vector2();
 
-    private CircleCollider2D _circleCollider;
+    private CircleCollider2D _collider;
+    private CapsuleCollider2D _collider2;
 
     private void Awake()
     {
-        _circleCollider = GetComponent<CircleCollider2D>();
+        try
+        {
+            _collider = GetComponent<CircleCollider2D>();
+        }
+        catch
+        {
+            try
+            {
+                _collider2 = GetComponent<CapsuleCollider2D>();
+            }
+            catch { }
+        }
         _audioSource = GetComponent<AudioSource>();
         _playerController = FindObjectOfType<PlayerController>();
         _rbody = GetComponent<Rigidbody2D>();
@@ -110,10 +122,21 @@ public class TargetController : MonoBehaviour
         return false;
     }
 
-    //@TODO Sequence for destroying target
     public void TargetHit()
     {
-        _circleCollider.enabled = false;
+        try
+        {
+            _collider.enabled = false;
+        }
+        catch
+        {
+            try
+            {
+                _collider2.enabled = false;
+            }
+            catch { }
+        }
+
         _audioSource.Stop();
         _audioSource.PlayOneShot(_specialTargetHitAudio);
         

@@ -188,6 +188,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
+      propertyPath: _pointsValue
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126386550147942067, guid: ee4fdc49177ad9b44a553853d48ba15d, type: 3}
       propertyPath: _outOfPlaytimeReduction
       value: 0
       objectReference: {fileID: 0}
