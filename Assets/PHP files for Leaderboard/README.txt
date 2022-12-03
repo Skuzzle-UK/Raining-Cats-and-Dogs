@@ -1,4 +1,4 @@
-These 2 PHP files will need to be edited to include the correct connection details for the leaderboard database.
+These 3 PHP files will need to be edited to include the correct connection details for the leaderboard database.
 You will also need to edit LeaderboardManager.cs in the Assets\Scenes\Leaderboard folder at the lines outlined below.
 
     private static readonly string secretKey = "ACoolSecretWord"; //must match secret key of php document
